@@ -1,47 +1,116 @@
 
 // array of questions for user
-const questions = [
+// const questions = [
 
-];
+// ];
 
 // function to write README file
-function writeToFile(fileName, data) {
-}
+//  writeToFile(fileName, data) {
+// }
 
 // function to initialize program
-function init() {
+// function init() {
 
-}
+// }
 
 // function call to initialize program
-init();
+// init();
 
-const fs = require('fs');
-const generateReadme = require('./readme-template');
+const inquirer = require('inquirer');
 
-const readmeDataArgs = process.argv.slice(2, process.argv.length);
+// console.log(inquirer);
+const promptUser = () => {
+    return inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'description',
+                message: 'What is the description of your project?'
+            },
+            {
+                input: 'input',
+                name: 'installation-instructions',
+                message: 'What is the command to install your project?',
+                default: 'npm i'
+            },
+            {
+                type: 'input',
+                name: 'usage-information',
+                message: 'What does the user need to know about using this repo?'
+            },
+            {
+                type: 'input',
+                name: 'contribution-guidelines',
+                message: 'What does the user need to know about contributing to this repo?'
+            },
+            {
+                type: 'input',
+                name: 'test-instructions',
+                message: 'What command should be used to run tests for this project?'
+            }
+        ])
+}
 
-const title = readmeDataArgs[0];
+
+
+    const licensePrompt = licenseData => {
+        // If there is no license array, create one!
+        if (!licenseData.license) {
+            licenseData.license = [];
+        }
+        console.log(
+            `
+            =============
+            Add A License
+            =============
+            `
+        );
+            return inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'license',
+                    choices: ['Apache', 'GNU', 'NPM', 'BSD', 'Rust']
+                }
+            ])
+    };
+
+    const userInfo = () => {
+        return inquirer.prompt([
+            {
+                type: 'input',
+                name: 'Github-userName',
+                message: 'Please enter your github username!'
+            }
+        ])
+    }
+
+    promptUser()
+    .then(answers => console.log(answers))
+    .then(licensePrompt)
+    .then(licensePrompt => console.log(licensePrompt))
+    //.then(licenseProject => {
+    //    licenseData.license.push(licenseProject);
+    //});
+
+// const fs = require('fs');
+// const generateReadme = require('./readme-template');
+
+// const readmeDataArgs = process.argv.slice(2, process.argv.length);
+
+// const title = readmeDataArgs[0];
 
 // -=- three arguments -=-
 // 1. generating the README tile
 // 2. calling the generateMarkdown function, this is the data being written
 // 3. error handling, failures and successes
-fs.writeFile('README.md', generateReadme(title), err => {
-    if (err) throw new Error (err);
+// fs.writeFile('README.md', generateReadme(title), err => {
+    // if (err) throw new Error (err);
 
-    console.log('Added readMe!')
-})
+    // console.log('Added readMe!')
+// })
 
 
-// const inquirer = require('inquirer');
 
-// onst commandLineArgs = process.argv;
-
-//console.log(commandLineArgs);
-
-// const readmeDataArgs = process.argv.slice(2, process.argv.length);
- // console.log(readmeDataArgs);
 
 // array of questions for user
 /*
@@ -68,17 +137,4 @@ const questions = () => {
     }
   ]);
 };
-  console.log(questions());
-  */
-
-// function to write README file
-//function writeToFile(fileName, data) {
-//}
-
-// function to initialize program
-//function init() {
-
-//}
-
-// function call to initialize program
-//init();
+*/
