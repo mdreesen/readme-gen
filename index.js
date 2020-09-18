@@ -86,7 +86,8 @@ const projectDetails = () => {
             {
                 type: 'input',
                 name: 'test-instructions',
-                message: 'What command should be used to run tests for this project?'
+                message: 'What command should be used to run tests for this project?',
+                default: 'npm test'
             }
         ])
 };
@@ -137,7 +138,20 @@ const projectDetails = () => {
                 type: 'input',
                 name: 'email',
                 message: 'Please enter your email address.'
+            },
+            {
+                type: 'confirm',
+                name: 'questions',
+                message: 'Would you like to ask me any questions?',
+                default: false
+            },
+            {
+                type: 'input',
+                name: 'questions for me',
+                message: 'You can reach me via email at "mdreesen90@gmail.com" with your question(s), thank you!',
+                when: ({ questions }) => questions
             }
+
         ])
     };
 
