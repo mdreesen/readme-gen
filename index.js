@@ -17,15 +17,55 @@
 // init();
 
 const inquirer = require('inquirer');
-
 // console.log(inquirer);
-const promptUser = () => {
+
+const projectName = () => {
+    console.log(
+        `
+        ============
+        Project Name
+        ============
+        `
+    )
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'project-name',
+            message: 'Please enter the name of your project. (Required)',
+            validate: ProjectNameInput => {
+                if (ProjectNameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the name of your project.');
+                    return false;
+                }
+            }
+        }
+    ])
+};
+
+const projectDetails = () => {
+    console.log(
+        `
+        ===============
+        Project Details
+        ===============
+        `
+    )
     return inquirer
         .prompt([
             {
                 type: 'input',
                 name: 'description',
-                message: 'What is the description of your project?'
+                message: 'What is the description of your project? (Required)',
+                validate: descriptionInput => {
+                    if (descriptionInput) {
+                        return true;
+                    } else {
+                        console.log('What is the description of your project?')
+                        return false;
+                    }
+                }
             },
             {
                 input: 'input',
@@ -49,15 +89,12 @@ const promptUser = () => {
                 message: 'What command should be used to run tests for this project?'
             }
         ])
-}
+};
 
 
 
-    const licensePrompt = licenseData => {
+    const licensePrompt = () => {
         // If there is no license array, create one!
-        if (!licenseData.license) {
-            licenseData.license = [];
-        }
         console.log(
             `
             =============
@@ -75,19 +112,55 @@ const promptUser = () => {
     };
 
     const userInfo = () => {
+        console.log(
+            `
+            =========
+            User Info
+            =========
+            `
+        )
         return inquirer.prompt([
             {
                 type: 'input',
                 name: 'Github-userName',
-                message: 'Please enter your github username!'
+                message: 'Please enter your github username. (Required)',
+                validate: githubName => {
+                    if (githubName) {
+                        return true;
+                    } else {
+                        console.log('Please enter your github username.')
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Please enter your email address.'
             }
         ])
-    }
+    };
 
-    promptUser()
+    projectName()
+    .then(projectDetails)
+    .then(details => console.log(details))
     .then(answers => console.log(answers))
     .then(licensePrompt)
     .then(licensePrompt => console.log(licensePrompt))
+    .then(userInfo)
+    .then(user => console.log(user));
+
+
+/* 
+We can most likely use this code for later
+if (!licenseData.license) {
+            licenseData.license = [];
+        }
+*/
+
+
+
+
     //.then(licenseProject => {
     //    licenseData.license.push(licenseProject);
     //});
@@ -112,29 +185,3 @@ const promptUser = () => {
 
 
 
-// array of questions for user
-/*
-const questions = () => {
-    return inquirer.prompt([{
-        type: 'input',
-        name: 'description',
-        message: 'Please enter a description about your Project.'
-    },
-    {
-        type: 'input',
-        name: 'installation instructions',
-        message: 'Please enter the installation instructions for your project.'
-    },
-    {
-        type: 'input',
-        name: 'contribution guidelines',
-        message: 'Please enter (if any) contribution guidelines.' 
-    },
-    {
-        type: 'input',
-        name: 'test instructions',
-        message: 'Please enter test instructions for your project.'
-    }
-  ]);
-};
-*/
