@@ -1,23 +1,9 @@
-
-// array of questions for user
-// const questions = [
-
-// ];
-
-// function to write README file
-//  writeToFile(fileName, data) {
-// }
-
-// function to initialize program
-// function init() {
-
-// }
-
-// function call to initialize program
-// init();
-
 const inquirer = require('inquirer');
 // console.log(inquirer);
+const fs = require('fs');
+const path = require('path');
+const generateReadme = require('./readme-template');
+
 
 const projectName = () => {
     console.log(
@@ -69,25 +55,30 @@ const projectDetails = () => {
             },
             {
                 input: 'input',
-                name: 'installation-instructions',
+                name: 'installation',
                 message: 'What is the command to install your project?',
                 default: 'npm i'
             },
             {
                 type: 'input',
-                name: 'usage-information',
+                name: 'usage',
                 message: 'What does the user need to know about using this repo?'
             },
             {
                 type: 'input',
-                name: 'contribution-guidelines',
+                name: 'contribution',
                 message: 'What does the user need to know about contributing to this repo?'
             },
             {
                 type: 'input',
+<<<<<<< HEAD
                 name: 'test-instructions',
                 message: 'What command should be used to run tests for this project?',
                 default: 'npm test'
+=======
+                name: 'tests',
+                message: 'What command should be used to run tests for this project?'
+>>>>>>> develop
             }
         ])
 };
@@ -155,47 +146,53 @@ const projectDetails = () => {
         ])
     };
 
+    function writeToFile(fileName, data) {
+        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    };
+
+    /*
+
+    const init = () => {
+        inquirer.prompt(projectName()
+        .then(projectDetails)
+        .then(projectDetails => {
+            return generateReadme(projectDetails);
+        })
+        .then(licensePrompt)
+        .then(licensePrompt => {
+            return generateReadme(licensePrompt);
+        })
+        .then(userInfo)
+        .then(userInfo => {
+            return generateReadme(userInfo)
+        }))
+        .then((inquirerResponses) => {
+            console.log('Generating...');
+            writeToFile('README.md', generateReadme({...inquirerResponses}))
+        })
+    };
+
+    init();
+    */
+
+
     projectName()
     .then(projectDetails)
-    .then(details => console.log(details))
-    .then(answers => console.log(answers))
+    .then(projectDetails => {
+        return generateReadme(projectDetails);
+    })
     .then(licensePrompt)
-    .then(licensePrompt => console.log(licensePrompt))
+    .then(licensePrompt => {
+        return generateReadme(licensePrompt);
+    })
     .then(userInfo)
-    .then(user => console.log(user));
-
-
-/* 
-We can most likely use this code for later
-if (!licenseData.license) {
-            licenseData.license = [];
-        }
-*/
-
-
-
-
-    //.then(licenseProject => {
-    //    licenseData.license.push(licenseProject);
-    //});
-
-// const fs = require('fs');
-// const generateReadme = require('./readme-template');
-
-// const readmeDataArgs = process.argv.slice(2, process.argv.length);
-
-// const title = readmeDataArgs[0];
-
-// -=- three arguments -=-
-// 1. generating the README tile
-// 2. calling the generateMarkdown function, this is the data being written
-// 3. error handling, failures and successes
-// fs.writeFile('README.md', generateReadme(title), err => {
-    // if (err) throw new Error (err);
-
-    // console.log('Added readMe!')
-// })
-
-
-
-
+    .then(userInfo => {
+        return generateReadme(userInfo)
+    })
+    .then(function writeToFile(fileName, data) {
+        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    })
+    .catch(err => {
+        console.log(err);
+    })
+    
