@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 // console.log(inquirer);
 const fs = require('fs');
+const path = require('path');
 const generateReadme = require('./readme-template');
 
 
@@ -126,6 +127,12 @@ const projectDetails = () => {
         ])
     };
 
+    const init = ((inquirerResponses) => {
+        console.log('Generating...');
+        writeToFile('README.md', generateReadme({...inquirerResponses}))
+    });
+
+
     projectName()
     .then(projectDetails)
     .then(projectDetails => {
@@ -139,3 +146,7 @@ const projectDetails = () => {
     .then(userInfo => {
         return generateReadme(userInfo)
     })
+    .then(function writeToFile(fileName, data) {
+        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    })
+    .then(init());
