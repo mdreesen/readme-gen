@@ -127,10 +127,34 @@ const projectDetails = () => {
         ])
     };
 
-    const init = ((inquirerResponses) => {
-        console.log('Generating...');
-        writeToFile('README.md', generateReadme({...inquirerResponses}))
-    });
+    function writeToFile(fileName, data) {
+        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    };
+
+    /*
+
+    const init = () => {
+        inquirer.prompt(projectName()
+        .then(projectDetails)
+        .then(projectDetails => {
+            return generateReadme(projectDetails);
+        })
+        .then(licensePrompt)
+        .then(licensePrompt => {
+            return generateReadme(licensePrompt);
+        })
+        .then(userInfo)
+        .then(userInfo => {
+            return generateReadme(userInfo)
+        }))
+        .then((inquirerResponses) => {
+            console.log('Generating...');
+            writeToFile('README.md', generateReadme({...inquirerResponses}))
+        })
+    };
+
+    init();
+    */
 
 
     projectName()
@@ -149,4 +173,7 @@ const projectDetails = () => {
     .then(function writeToFile(fileName, data) {
         return fs.writeFileSync(path.join(process.cwd(), fileName), data)
     })
-    .then(init());
+    .catch(err => {
+        console.log(err);
+    })
+    
