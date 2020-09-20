@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 const generateReadme = require('./readme-template');
+const { writeFile, copyFile } = require('./utils/generate-readme.js')
 
 
 const projectName = () => {
@@ -13,21 +14,19 @@ const projectName = () => {
         ============
         `
     )
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'project-name',
-            message: 'Please enter the name of your project. (Required)',
-            validate: ProjectNameInput => {
-                if (ProjectNameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter the name of your project.');
-                    return false;
-                }
+    return inquirer.prompt([{
+        type: 'input',
+        name: 'project-name',
+        message: 'Please enter the name of your project. (Required)',
+        validate: ProjectNameInput => {
+            if (ProjectNameInput) {
+                return true;
+            } else {
+                console.log('Please enter the name of your project.');
+                return false;
             }
         }
-    ])
+    }])
 };
 
 const projectDetails = () => {
@@ -39,8 +38,7 @@ const projectDetails = () => {
         `
     )
     return inquirer
-        .prompt([
-            {
+        .prompt([{
                 type: 'input',
                 name: 'description',
                 message: 'What is the description of your project? (Required)',
@@ -71,112 +69,75 @@ const projectDetails = () => {
             },
             {
                 type: 'input',
-<<<<<<< HEAD
                 name: 'test-instructions',
                 message: 'What command should be used to run tests for this project?',
                 default: 'npm test'
-=======
-                name: 'tests',
-                message: 'What command should be used to run tests for this project?'
->>>>>>> develop
             }
         ])
 };
 
 
 
-    const licensePrompt = () => {
-        // If there is no license array, create one!
-        console.log(
-            `
+const licensePrompt = () => {
+    // If there is no license array, create one!
+    console.log(
+        `
             =============
             Add A License
             =============
             `
-        );
-            return inquirer.prompt([
-                {
-                    type: 'list',
-                    name: 'license',
-                    choices: ['Apache', 'GNU', 'NPM', 'BSD', 'Rust']
-                }
-            ])
-    };
+    );
+    return inquirer.prompt([{
+        type: 'list',
+        name: 'license',
+        choices: ['Apache', 'GNU', 'NPM', 'BSD', 'Rust']
+    }])
+};
 
-    const userInfo = () => {
-        console.log(
-            `
+const userInfo = () => {
+    console.log(
+        `
             =========
             User Info
             =========
             `
-        )
-        return inquirer.prompt([
-            {
-                type: 'input',
-                name: 'Github-userName',
-                message: 'Please enter your github username. (Required)',
-                validate: githubName => {
-                    if (githubName) {
-                        return true;
-                    } else {
-                        console.log('Please enter your github username.')
-                        return false;
-                    }
+    )
+    return inquirer.prompt([{
+            type: 'input',
+            name: 'Github-userName',
+            message: 'Please enter your github username. (Required)',
+            validate: githubName => {
+                if (githubName) {
+                    return true;
+                } else {
+                    console.log('Please enter your github username.')
+                    return false;
                 }
-            },
-            {
-                type: 'input',
-                name: 'email',
-                message: 'Please enter your email address.'
-            },
-            {
-                type: 'confirm',
-                name: 'questions',
-                message: 'Would you like to ask me any questions?',
-                default: false
-            },
-            {
-                type: 'input',
-                name: 'questions for me',
-                message: 'You can reach me via email at "mdreesen90@gmail.com" with your question(s), thank you!',
-                when: ({ questions }) => questions
             }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Please enter your email address.'
+        },
+        {
+            type: 'confirm',
+            name: 'questions',
+            message: 'Would you like to ask me any questions?',
+            default: false
+        },
+        {
+            type: 'input',
+            name: 'questions for me',
+            message: 'You can reach me via email at "mdreesen90@gmail.com" with your question(s), thank you!',
+            when: ({ questions }) => questions
+        }
 
-        ])
-    };
-
-    function writeToFile(fileName, data) {
-        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
-    };
-
-    /*
-
-    const init = () => {
-        inquirer.prompt(projectName()
-        .then(projectDetails)
-        .then(projectDetails => {
-            return generateReadme(projectDetails);
-        })
-        .then(licensePrompt)
-        .then(licensePrompt => {
-            return generateReadme(licensePrompt);
-        })
-        .then(userInfo)
-        .then(userInfo => {
-            return generateReadme(userInfo)
-        }))
-        .then((inquirerResponses) => {
-            console.log('Generating...');
-            writeToFile('README.md', generateReadme({...inquirerResponses}))
-        })
-    };
-
-    init();
-    */
+    ])
+};
 
 
-    projectName()
+projectName()
     .then(projectDetails)
     .then(projectDetails => {
         return generateReadme(projectDetails);
@@ -189,10 +150,12 @@ const projectDetails = () => {
     .then(userInfo => {
         return generateReadme(userInfo)
     })
-    .then(function writeToFile(fileName, data) {
-        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+    .then(pageReadme => {
+        return writeFile(pageReadme)
+    })
+    .then(copyFileResponse => {
+        console.log(copyFileResponse)
     })
     .catch(err => {
         console.log(err);
     })
-    

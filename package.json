@@ -18,6 +18,7 @@
   "homepage": "https://github.com/mdreesen/readme-generator#readme",
   "dependencies": {
     "fs": "0.0.1-security",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "requirer": "0.0.4"
   }
 }
