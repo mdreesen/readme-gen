@@ -6,7 +6,7 @@ const writeFile = fileContent => {
             // If there is an error, reject the promise and send the error to the catch method
             if (err) {
                 reject(err);
-                // return out of the function here to make sure the promise dosnt exicute the resolve() function
+                // return out of the function here to make sure the promise dosn't execute the resolve() function
                 return;
             }
             // If everything went well, resolve the promise and send the successful data to the .then() method

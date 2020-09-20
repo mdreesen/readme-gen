@@ -1,6 +1,4 @@
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const path = require('path');
 const generateReadme = require('./readme-template');
 const { writeFile, copyFile } = require('./utils/generate-readme.js')
 
