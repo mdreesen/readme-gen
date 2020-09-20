@@ -91,7 +91,7 @@ const projectName = () => {
         {
             type: 'input',
             name: 'questionsForMe',
-            message: 'Please enter your question here',
+            message: 'Please enter your question here:',
             when: ({ questions }) => questions
         },
     ])
