@@ -1,57 +1,36 @@
 const generateReadme = data => {
     return `
-    # ${data.projectName}
+# ${data.projectName}
 
-    # Description
-    ${data.description}
+ ### Description
+${data.description}
 
-    # Installation
-    ${data.installation}
+## Table Of Contents
+* [Installation](#installation)
+* [Contributions](#contributions)
+* [License](#license)
+* [Questions](#questions)
 
-    ${data.usage}
 
-    ${data.contribution}
 
-    ${data.tests}
 
-    ${data.license}
+### Installation
+* ${data.installation}
+* ${data.usage}
 
-    # User Info
+### Contributions
+${data.contribution}
+${data.tests}
 
-    ## Github user
-    ${data.github}
+# License
+${data.license}
 
-    ## Email
-    ${data.email}
+## Questions
+${data.questionsForMe}
 
-    ${data.questions}
-
-    ${data.questionsForMe}
-    `
+${data.github}
+${data.email}
+`
 };
-
-/*
-const generateReadme = data => {
-    return `
-    # ${data.project-name}
-
-    ${data.description}
-
-    ${data.installation}
-
-    ${data.usage}
-
-    ${data.tests}
-
-    ${data.license}
-
-    ${data.contribution}
-
-    ${data.github}
-
-    ${data.email}
-    `
-};
-*/
 
 module.exports = generateReadme;

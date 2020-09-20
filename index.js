@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
-// console.log(inquirer);
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 const generateReadme = require('./readme-template');
 const { writeFile, copyFile } = require('./utils/generate-readme.js')
 
@@ -65,7 +64,7 @@ const projectName = () => {
         {
             type: 'list',
             name: 'license',
-            choices: ['Apache', 'GNU', 'NPM', 'BSD', 'Rust']
+            choices: ['Apache', 'GNU', 'NPM', 'BSD', 'Rust', 'None']
         },
         {
             type: 'input',
@@ -94,9 +93,9 @@ const projectName = () => {
         {
             type: 'input',
             name: 'questionsForMe',
-            message: 'You can reach me via email at "mdreesen90@gmail.com" with your question(s), thank you!',
+            message: 'Please enter your question here',
             when: ({ questions }) => questions
-        }
+        },
     ])
 };
 
