@@ -1,8 +1,8 @@
 
-# ReadMe Generator
+# Project Name
 
  ### Description
-This project helps users create a good looking readMe
+This is the description of the project
 
 # License
 ![GitHub license](https://img.shields.io/badge/license-Apache-blue.svg)
@@ -21,16 +21,19 @@ This project helps users create a good looking readMe
 * npm i
 
 ### Usage
-* Something about the Repo
+* Something to know about the repo
 
 ### Contributions
-Developers can contribute to this repo
+Somthing about contributing to the repo
 
 ### Tests
 npm test
 
 ## Questions
-You can ask a question here
+This is a question
 
-mdreesen
-mdreesen90@gmail.com
+Github username:
+* mdreesen
+
+Email:
+* mdreesen90@gmail.com

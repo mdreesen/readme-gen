@@ -42,8 +42,11 @@ ${data.tests}
 ## Questions
 ${data.questionsForMe}
 
-${data.github}
-${data.email}
+Github username:
+* ${data.github}
+
+Email:
+* ${data.email}
 `
 };
 
