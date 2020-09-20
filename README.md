@@ -7,4 +7,4 @@ This readMe-gen project is to make users a readMe with easy steps to follow so t
 https://github.com/mdreesen/readme-gen
 
 ## Walkthrough Video
-https://drive.google.com/file/d/1bkL60rypiuNURNAQBrii8evDQ0vZv_1i/preview"
+https://drive.google.com/file/d/1bkL60rypiuNURNAQBrii8evDQ0vZv_1i/preview
