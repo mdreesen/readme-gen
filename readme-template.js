@@ -20,23 +20,23 @@ ${renderLicenseBadge(data.license)}
 ## Table Of Contents
 * [Installation](#installation)
 * [Usage Information](#usage)
-* [Contribution Guidelines](#contribution)
+* [Contribution Guidelines](#contributions)
 * [test Instructions](#tests)
 * [Questions](#Questions)
 
 
 
 
-### Installation Instructions
+### Installation
 * ${data.installation}
 
-### Usage Information
+### Usage
 * ${data.usage}
 
-### Contribution Guidelines
+### Contributions
 ${data.contribution}
 
-### Test Instructions
+### Tests
 ${data.tests}
 
 ## Questions
