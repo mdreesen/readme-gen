@@ -43,7 +43,7 @@ ${data.tests}
 ${data.questionsForMe}
 
 Github username:
-* ${data.github}
+* [${data.github}](https://github.com/${data.github})
 
 Email:
 * ${data.email}

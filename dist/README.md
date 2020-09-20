@@ -1,8 +1,8 @@
 
-# Project Name
+# ReadMe Generator
 
  ### Description
-This is the description of the project
+This is a description
 
 # License
 ![GitHub license](https://img.shields.io/badge/license-Apache-blue.svg)
@@ -21,10 +21,10 @@ This is the description of the project
 * npm i
 
 ### Usage
-* Something to know about the repo
+* Telling the user about what the repo is
 
 ### Contributions
-Somthing about contributing to the repo
+Contributing to this repo
 
 ### Tests
 npm test
@@ -33,7 +33,7 @@ npm test
 This is a question
 
 Github username:
-* mdreesen
+* [mdreesen](https://github.com/mdreesen)
 
 Email:
 * mdreesen90@gmail.com
