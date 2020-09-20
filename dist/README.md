@@ -21,16 +21,16 @@ This is the description of the project
 * npm i
 
 ### Usage
-* Telling the user about this repo
+* Tell the user something about the repo
 
 ### Contributions
-Something about this repo
+Something about contributing to the repo
 
 ### Tests
 npm test
 
 ## Questions
-Here is a question about
+This is a question
 
 Github username:
 * [mdreesen](https://github.com/mdreesen)
