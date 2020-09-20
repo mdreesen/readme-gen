@@ -1,57 +1,22 @@
-const renderProjectName = name => {
-    return `
-    # ${name}
-    `;
-};
-
-const renderProjectDescription = description => {
-    return `
-    # Description
-    ${description}
-    `;
-};
-
-const renderProjectInstallation = installation => {
-    return `
-    ## Installation
-    ${installation}
-    `
-};
-
-const renderProjectUsage = usage => {
-    return `
-    ## Usage
-    ${usage}
-    `
-};
-
-const renderProjectTests = tests => {
-    return `
-    # Tests
-    ${tests}
-    `
-}
-
-const renderProjectContribution = contribution => {
-    return `
-    # Contributions
-    ${contribution}
-    `
-};
-
 const generateReadme = data => {
     return `
-        ${renderProjectName(data.name)}
+    # ${data.project-name}
 
-        ${renderProjectDescription(data.description)}
+    ${data.description}
 
-        ${renderProjectInstallation(data.installation)}
+    ${data.installation}
 
-        ${renderProjectUsage(data.usage)}
+    ${data.usage}
 
-        ${renderProjectTests(data.tests)}
+    ${data.tests}
 
-        ${renderProjectContribution(data.contribution)}
+    ${data.license}
+
+    ${data.contribution}
+
+    ${data.github}
+
+    ${data.email}
     `
 };
 

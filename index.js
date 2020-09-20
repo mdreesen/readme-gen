@@ -69,7 +69,7 @@ const projectDetails = () => {
             },
             {
                 type: 'input',
-                name: 'test-instructions',
+                name: 'tests',
                 message: 'What command should be used to run tests for this project?',
                 default: 'npm test'
             }
