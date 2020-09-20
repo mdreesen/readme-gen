@@ -45,9 +45,8 @@ ${data.questionsForMe}
 Github username:
 * [${data.github}](https://github.com/${data.github})
 
-Email:
-* ${data.email}
-`
+* If you have any questions, you can reach me at ${data.email}
+`;
 };
 
 // Exports the function
